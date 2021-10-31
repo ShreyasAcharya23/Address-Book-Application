@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+	
+	<title>Contacts List</title>
+</head>
+<body>
+    
+    <div class="container">
+        <a href="{% url 'addcontact' %}">
+				<i class="fas fa-plus-circle add"></i>
+                <button class="button">Add Contact</button>
+		</a>
+        <a href="{% url 'search_contact' %}">
+				<i class="fas fa-plus-circle add"></i>
+                <button class="button">Search Contact</button>
+		</a>
+        <section class="contacts-library">
+				{% for contact in contacts reversed %}
+			        <a href="{%url 'profile' contact.id %}" style="text-decoration: none;">
+
+					<div class="contact-section">
+						<li class="list__item">
+						    <p class="contact-name">{{contact.first_name}}</p>
+						</li>
+
+						<li id="call" class="list__item">
+							<i class="fas fa-phone"></i>
+							<i class="fas fa-sms text"></i>
+						</li>
+					</div>
+				<hr>
+                </a>
+				{% endfor %}
+			
+		</section>
+    </div>
+</body>

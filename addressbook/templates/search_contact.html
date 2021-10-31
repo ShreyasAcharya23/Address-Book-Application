@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <title>Django Search</title>
@@ -12,11 +12,11 @@
     {% csrf_token %} 
     <input type="text" name="name" value = {{search_input}}>
     <input type="submit" name="submit" value="Search">
-    {% comment %} <input type="search-name" class="contact-search" name="search-area" placeholder="Search"
+     <input type="search-name" class="contact-search" name="search-area" placeholder="Search"
 					value={{search_input}}>
 
 				<i onclick="document.getElementById('search-form').submit();" style="padding-left: 5px;"
-					class="fas fa-search"></i> {% endcomment %}
+					class="fas fa-search"></i> 
 
 </form>
 
@@ -41,4 +41,4 @@
 
 </body>
 </html>
-
+{% endcomment %}

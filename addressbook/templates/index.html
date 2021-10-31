@@ -17,14 +17,21 @@
 <body>
     
     <div class="container">
+    <header class="header">
         <a href="{% url 'addcontact' %}">
 				<i class="fas fa-plus-circle add"></i>
                 <button class="button">Add Contact</button>
 		</a>
-        <a href="{% url 'search_contact' %}">
-				<i class="fas fa-plus-circle add"></i>
-                <button class="button">Search Contact</button>
-		</a>
+        <form action="/" method="GET">
+
+				<input  class="contact-search" placeholder="Search"
+					value={{search_input}}>
+
+				<i onclick="document.getElementById('search-form').submit();" style="padding-left: 5px;"
+					class="fas fa-search"></i>
+
+		</form>
+    </header>
         <section class="contacts-library">
 				{% for contact in contacts reversed %}
 			        <a href="{%url 'profile' contact.id %}" style="text-decoration: none;">
@@ -41,6 +48,8 @@
 					</div>
 				<hr>
                 </a>
+                {%empty%}
+                <h3>No Contact Found </h3>
 				{% endfor %}
 			
 		</section>

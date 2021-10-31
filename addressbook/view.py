@@ -6,7 +6,12 @@ from .forms import contactForm
 
 def index(request):
     contacts = Contact.objects.all()
-    # search = request.GET.get()
+    # search_input = request.GET.get('search-area')
+    # if search_input:
+    #     contacts = Contact.objects.filter(first_name__contains = search_input)
+    # else:
+    #     contacts = Contact.objects.all()
+    #     search_input = ''
     return render(request, 'index.html', {'contacts': contacts})
 
 

@@ -20,7 +20,7 @@
 <body>
 	<div class="container">
 		<header class="hero">
-			<a href="{% url 'profile' contact.id %}">
+			<a href="{% url 'index' %}">
 				<i class="fas fa-chevron-circle-left back-btn"></i>
 			</a>
 			<div class="hero-info">
@@ -34,9 +34,11 @@
 			<form method='POST'>
 				{% csrf_token %}
 				<div class="delete-contact">
-					<i class="fas fa-trash delete-icon"></i>
+				<i class="fas fa-trash delete-icon"></i>
+				<a href="{% url 'index' %}">
 					<input class="delete-button" type="submit" value='Delete Contact' />
 				</div>
+				</a>
 			</form>
 
 		</section>

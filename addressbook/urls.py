@@ -19,13 +19,13 @@ from django.urls import path
 from . import view
 
 urlpatterns = [
-    path('', view.index, name='index'),
+    path('index/', view.index, name='index'),
     path('profile/<str:pk>', view.contactProfile, name = "profile"),
     path('admin/', admin.site.urls),
     path('addcontact/', view.addContact, name = "addcontact"),
     path('deletecontact/<str:pk>', view.deleteContact, name='delete'),
     path('searchcontact/', view.search_contact, name='search_contact'),
-    path('login/', view.loginPage, name="login"),  
+    path('', view.loginPage, name="login"),  
 	path('logout/', view.logoutUser, name="logout"),
 
 ]

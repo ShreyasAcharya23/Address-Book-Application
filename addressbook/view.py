@@ -22,7 +22,7 @@ def addContact(request):
         if form.is_valid():
             form.save()
             # redirects to the index page
-            return redirect('/')
+            return redirect('/index/')
     else:
         form = contactForm()
 
@@ -45,7 +45,7 @@ def deleteContact(request,pk):
     if request.method == "POST":
         contact.delete()
         # Redirects to the index page
-        return redirect('/')
+        return redirect('/index/')
     return render(request, 'delete.html', {'contact': contact})
 
 def search_contact(request):
@@ -67,7 +67,7 @@ def search_contact(request):
 def loginPage(request):
     
 	if request.user.is_authenticated:
-		return redirect('/')
+		return redirect('index/')
 	else:
 		if request.method == 'POST':
             # GET the username and password
@@ -79,7 +79,7 @@ def loginPage(request):
 			if user is not None:
 				login(request, user)
                 # Directs to the index page
-				return redirect('/')
+				return redirect('index/')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 

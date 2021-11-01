@@ -1,8 +1,8 @@
 ﻿# Address-Book-Application
-To sign in as a user - the userID is - user1
+To sign in as a user - the userID is - user1,
 password is ContactBook1
 
-#Python and Django are the only prerequisites
+#Prerequisites - Python and Django
 
 Running the application - 
 1. Using Command Prompt open the addressbook where you shall see three files (db.sqlite3, manage.py and readme.md) and a folder.

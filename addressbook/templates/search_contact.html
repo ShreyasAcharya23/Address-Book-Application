@@ -33,14 +33,14 @@ ul li:last-child {
 <body>
 <div class="container">
 	<header class="hero">
-			<a href="{% url 'index' %}">
+			<a href="{% url 'index' %}"> {% comment %} directs to the index page {% endcomment %}
 				<i class="fas fa-chevron-circle-left back-btn"></i>
 			</a>
 			</div>
 	</header>
 	<div class="contact-section">
 	{%for result in results%}
-	<a href="{%url 'profile' result.id %}" style="text-decoration: none;">
+	<a href="{%url 'profile' result.id %}" style="text-decoration: none;"> {% comment %} directs to the profile page {% endcomment %}
 	<br/>
 	<li class="list__item">
 		<p class="contact-name">{{result.first_name}}</p>

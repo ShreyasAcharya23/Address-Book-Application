@@ -62,7 +62,7 @@ input[type=submit]:hover {
 <body>
 <div class="container">
 	<header class="hero">
-			<a href="{% url 'index' %}">
+			<a href="{% url 'index' %}"> {% comment %} directs to the index page {% endcomment %}
 				<i class="fas fa-chevron-circle-left back-btn"></i>
 			</a>
 			</div>
@@ -71,7 +71,7 @@ input[type=submit]:hover {
   <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <a href="{% url 'index' %}">
+    <a href="{% url 'index' %}"> {% comment %} directs to the index page {% endcomment %}
 		  <button type="submit"> Save Contact</button>
 	  </a>
   </form>

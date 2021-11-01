@@ -47,13 +47,13 @@ body {
         <a href="{% url 'addcontact' %}">
             <button class="button">Add Contact</button>
 		</a>
-		<a href="{% url 'logout' %}">
+		<a href="{% url 'logout' %}"> {% comment %} Logs the user out {% endcomment %}
             <button class="button">Logout</button>
 		</a>
 		<br/>
 		<br/>
 
-        <form class="d-flex" method="GET" action="{%url 'search_contact'%}">
+        <form class="d-flex" method="GET" action="{%url 'search_contact'%}"> {% comment %} directs to the search results page {% endcomment %}
 			{% csrf_token %} {% comment %} Cross Site Request Forgery Token  {% endcomment %}
 			<input class="form-control me-2" placeholder="Search Contact" type="search" aria-label="Search" name="search_contact">
 				<button class="btn" type="submit"> Search </button>
@@ -62,7 +62,7 @@ body {
     </header>
         <section class="contacts-library">
 				{% for contact in contacts reversed %}
-			        <a href="{%url 'profile' contact.id %}" style="text-decoration: none;">
+			        <a href="{%url 'profile' contact.id %}" style="text-decoration: none;"> {% comment %} directs to the contact page and displays contact details {% endcomment %}
 
 					<div class="contact-section">
 						<li class="list__item">
@@ -71,7 +71,7 @@ body {
 					</div>
 				<hr>
                 </a>
-                {%empty%}
+                {%empty%} {% comment %} if contact is not found {% endcomment %}
                 <h3>No Contact Found </h3>
 				{% endfor %}
 			

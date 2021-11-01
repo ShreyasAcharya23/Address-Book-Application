@@ -18,8 +18,6 @@ from django.urls import path
 
 from . import view
 
-
-
 urlpatterns = [
     path('', view.index, name='index'),
     path('profile/<str:pk>', view.contactProfile, name = "profile"),

@@ -59,7 +59,7 @@ button {
 </head>
 
 <body>
-	<a href="{% url 'index' %}">
+	<a href="{% url 'index' %}"> {% comment %} directs to the index page {% endcomment %}
 				<i class="fas fa-chevron-circle-left back-btn"></i>
 	</a>
 	<div class="card">
@@ -73,7 +73,7 @@ button {
 	</div>
     <div>
     <section class="button-container">
-			<a href="{% url 'delete' contact.id %}">
+			<a href="{% url 'delete' contact.id %}"> {% comment %} directs to the delete contact page {% endcomment %}
 				<div class="update-contact">
 					<button class="button">Delete Contact</button>
 				</div>

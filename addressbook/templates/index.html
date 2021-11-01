@@ -4,6 +4,32 @@
 <html>
 
 <head>
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+.button {
+  background-color: #808080; /* Green background */
+  border: 1px solid white; /* Green border */
+  color: white; /* White text */
+  padding: 6px 6px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+
+
+/* Add a background color on hover */
+.button:hover {
+  background-color: #000000;
+}
+
+
+</style> 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -16,20 +42,22 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container" class="btn-group">
     <header class="header">
         <a href="{% url 'addcontact' %}">
-				<i class="fas fa-plus-circle add"></i>
-                <button class="button">Add Contact</button>
+            <button class="button">Add Contact</button>
 		</a>
-        <form action="/" method="GET">
+		<a href="{% url 'logout' %}">
+            <button class="button">Logout</button>
+		</a>
+		<br/>
+		<br/>
 
-				<input  class="contact-search" placeholder="Search"
-					value={{search_input}}>
-
-				<i onclick="document.getElementById('search-form').submit();" style="padding-left: 5px;"
-					class="fas fa-search"></i>
-
+        <form class="d-flex" method="GET" action="{%url 'search_contact'%}">
+			{% csrf_token %} {% comment %} Cross Site Request Forgery Token  {% endcomment %}
+			<input class="form-control me-2" placeholder="Search Contact" type="search" aria-label="Search" name="search_contact">
+				<button class="btn" type="submit"> Search </button>
+				
 		</form>
     </header>
         <section class="contacts-library">
@@ -39,11 +67,6 @@
 					<div class="contact-section">
 						<li class="list__item">
 						    <p class="contact-name">{{contact.first_name}}</p>
-						</li>
-
-						<li id="call" class="list__item">
-							<i class="fas fa-phone"></i>
-							<i class="fas fa-sms text"></i>
 						</li>
 					</div>
 				<hr>

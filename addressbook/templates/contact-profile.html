@@ -1,9 +1,52 @@
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  align:left;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.button-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+</style>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -16,22 +59,17 @@
 </head>
 
 <body>
-
-	<div class="container">
-		<header class="hero">
-			<a href="{% url 'index' %}">
+	<a href="{% url 'index' %}">
 				<i class="fas fa-chevron-circle-left back-btn"></i>
-			</a>
-			<div class="hero-info">
-				<h1 class="first_name">{{ contact.first_name }}</h1>
-				<p class="last_name">{{ contact.last_name }}</p>
-				<p class="email">{{ contact.email }}</p>
-				<p class="phone_number">{{ contact.phone_number }}</p>
-				<p class="address">{{ contact.address }}</p>
+	</a>
+	<div class="card">
 
-			</div>
-		</header>
-
+		<h2 class="first_name">{{ contact.first_name }}</h2>
+		<p class="last_name">{{ contact.last_name }}</p>
+		<p class="email">{{ contact.email }}</p>
+		<p class="phone_number">{{ contact.phone_number }}</p>
+		<p class="address">{{ contact.address }}</p>
+			
 	</div>
     <div>
     <section class="button-container">
@@ -40,7 +78,6 @@
 					<button class="button">Delete Contact</button>
 				</div>
 			</a>
-
 		</section>
     </div>
 </body>

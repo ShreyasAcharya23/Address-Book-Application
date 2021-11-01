@@ -15,20 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .view import index
-from .view import addContact
-from .view import contactProfile
-from .view import deleteContact
-from .view import search_contact
+
+from . import view
 
 
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('profile/<str:pk>', contactProfile, name = "profile"),
+    path('', view.index, name='index'),
+    path('profile/<str:pk>', view.contactProfile, name = "profile"),
     path('admin/', admin.site.urls),
-    path('addcontact/', addContact, name = "addcontact"),
-    path('deletecontact/<str:pk>', deleteContact, name='delete'),
-    path('searchcontact/', search_contact, name='search_contact'),
+    path('addcontact/', view.addContact, name = "addcontact"),
+    path('deletecontact/<str:pk>', view.deleteContact, name='delete'),
+    path('searchcontact/', view.search_contact, name='search_contact'),
+    path('login/', view.loginPage, name="login"),  
+	path('logout/', view.logoutUser, name="logout"),
 
 ]

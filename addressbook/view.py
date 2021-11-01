@@ -2,16 +2,18 @@ from django.shortcuts import redirect, render
 from .models import Contact
 from addressbook.settings import TEMPLATES
 
+
+
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib import messages
+
+from django.contrib.auth.decorators import login_required
+
 from .forms import contactForm
 
 def index(request):
     contacts = Contact.objects.all()
-    # search_input = request.GET.get('search-area')
-    # if search_input:
-    #     contacts = Contact.objects.filter(first_name__contains = search_input)
-    # else:
-    #     contacts = Contact.objects.all()
-    #     search_input = ''
     return render(request, 'index.html', {'contacts': contacts})
 
 
@@ -46,13 +48,38 @@ def deleteContact(request,pk):
     return render(request, 'delete.html', {'contact': contact})
 
 def search_contact(request):
+    
     if request.method == "GET":
-        query_name = request.GET.get('first_name', None)
-        if query_name:
+        search_contact = request.GET.get('search_contact')
+        if search_contact:
             # retrieve all product that contains query_name.
-            results = Contact.objects.filter(first_name__icontains=query_name)
-            return render(request, 'search_contact.html', {"results":results})
-        else:
-            results = Contact.objects.all()
-            search_contact = ''
-    return render(request, 'search_contact.html',{'results':results})
+            results = Contact.objects.filter(first_name__icontains=search_contact)
+            return render(request, 'search_contact.html', {"results":results} ) #results are saved and passed as a dictionary
+    else:
+        results = Contact.objects.all()  
+        results = ''
+        return render(request, 'search_contact.html',{'results': results})
+
+
+def loginPage(request):
+	if request.user.is_authenticated:
+		return redirect('/')
+	else:
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
+
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('/')
+			else:
+				messages.info(request, 'Username OR password is incorrect')
+
+		context = {}
+		return render(request, 'login.html', context)
+
+def logoutUser(request):
+	logout(request)
+	return redirect('login')
